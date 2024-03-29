@@ -5,7 +5,7 @@
  * @new_node: pointer to the new node.
  * @ln: line number
  */
-void add_to_stack(stack **new_node, __attribute__((unused))unsigned int ln)
+void add_to_stack(stack_t **new_node, __attribute__((unused))unsigned int ln)
 {
 	stack_t *tmp;
 
@@ -48,7 +48,7 @@ void print_stack(stack_t **stack, unsigned int ln)
  */
 void pop_top(stack_t **stack, unsigned int ln)
 {
-	stack_t **tmp;
+	stack_t *tmp;
 
 	if (!stack || !*stack)
 		more_err(7, ln);

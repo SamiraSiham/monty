@@ -41,7 +41,7 @@ void add_nodes(stack_t **stack, unsigned int ln)
 {
 	int sum;
 
-	if (!stack || !*stack, !(*stack)->next)
+	if (!stack || !*stack || !(*stack)->next)
 		more_err(8, ln, "add");
 
 	(*stack) = (*stack)->next;
@@ -64,7 +64,7 @@ void sub_nodes(stack_t **stack, unsigned int ln)
 		more_err(8, ln, "sub");
 
 	(*stack) = (*stack)->next;
-	sub = (*stack)->n - (*stack)->prev;
+	sub = (*stack)->n - (*stack)->prev->n;
 	(*stack)->n = sub;
 	free((*stack)->prev);
 	(*stack)->prev = NULL;

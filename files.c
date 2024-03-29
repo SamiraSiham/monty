@@ -6,7 +6,7 @@
  */
 void open_file(char *file_name)
 {
-	FILE *fd = open(file_name, "r");
+	FILE *fd = fopen(file_name, "r");
 
 	if (!file_name || !fd)
 		err(2, file_name);
@@ -93,7 +93,7 @@ void find_func(char *opcode, char *val, int ln, int format)
 		{NULL, NULL}
 	};
 
-	if (opcode[0] == "#")
+	if (opcode[0] == '#')
 		return;
 	for (flag = 1, i = 0; func_list[i].opcode; i++)
 	{

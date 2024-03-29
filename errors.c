@@ -21,7 +21,7 @@ void err(int err_code, ...)
 			fprintf(stderr, "USAGE: monty file\n");
 			break;
 		case 2:
-			printf(stderr, "ERROR: can't open file %s\n", va_arg(ag, char *));
+			fprintf(stderr, "ERROR: can't open file %s\n", va_arg(ag, char *));
 			break;
 		case 3:
 			l_num = va_arg(ag, int);
@@ -61,7 +61,7 @@ void more_err(int err_code, ...)
 			fprintf(stderr, "L%d: stack is empty\n", va_arg(ag, int));
 			break;
 		case 7:
-			fprintf(stderr, "L%d: stack is empty\n", va_arg(arg, int));
+			fprintf(stderr, "L%d: stack is empty\n", va_arg(ag, int));
 			break;
 		case 8:
 			l_num = va_arg(ag, unsigned int);
