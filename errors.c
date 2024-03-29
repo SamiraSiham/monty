@@ -21,7 +21,7 @@ void err(int err_code, ...)
 			fprintf(stderr, "USAGE: monty file\n");
 			break;
 		case 2:
-			fprintf(stderr, "ERROR: can't open file %s\n", va_arg(ag, char *));
+			fprintf(stderr, "Error: can't open file %s\n", va_arg(ag, char *));
 			break;
 		case 3:
 			l_num = va_arg(ag, int);
@@ -29,10 +29,10 @@ void err(int err_code, ...)
 			fprintf(stderr, "L%d: unknown instruction %s\n", l_num, op);
 			break;
 		case 4:
-			fprintf(stderr, "ERROR: malloc failed\n");
+			fprintf(stderr, "Error: malloc failed\n");
 			break;
 		case 5:
-			fprintf(stderr, "L%d: USAGE: push integer\n", va_arg(ag, int));
+			fprintf(stderr, "L%d: usage: push integer\n", va_arg(ag, int));
 			break;
 		default:
 			break;
@@ -58,15 +58,15 @@ void more_err(int err_code, ...)
 	switch (err_code)
 	{
 		case 6:
-			fprintf(stderr, "L%d: stack is empty\n", va_arg(ag, int));
+			fprintf(stderr, "L%d: can't pint, stack is empty\n", va_arg(ag, int));
 			break;
 		case 7:
-			fprintf(stderr, "L%d: stack is empty\n", va_arg(ag, int));
+			fprintf(stderr, "L%d: can't pop, stack is empty\n", va_arg(ag, int));
 			break;
 		case 8:
 			l_num = va_arg(ag, unsigned int);
 			op = va_arg(ag, char *);
-			fprintf(stderr, "L%d: stack is too short for %s\n", l_num, op);
+			fprintf(stderr, "L%d: can't %s, stack is too short\n", l_num, op);
 			break;
 		case 9:
 			fprintf(stderr, "L%d: division by 0\n", va_arg(ag, unsigned int));
