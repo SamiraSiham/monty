@@ -17,7 +17,9 @@ void open_file(char *file_name)
 /**
  * read_file - reads file
  * @fd: pointer to file
+ * Return: void
  */
+
 void read_file(FILE *fd)
 {
 	int ln, format = 0;
@@ -105,4 +107,43 @@ void find_func(char *opcode, char *val, int ln, int format)
 	}
 	if (flag == 1)
 		err(3, ln, opcode);
+}
+
+/**
+ * call_fun - calls required function
+ * @func: pointer to function
+ * @op: opcode
+ * @val: value
+ * @ln: line number
+ * @format: storage format, 0 => stack, 1 => queue
+ */
+void call_fun(op_func func, char *op, char *val, int ln, int format)
+{
+	stack_t *node;
+	int flag;
+	int i;
+
+	flag = 1;
+	if (strcmp(op, "push") == 0)
+	{
+		if (val && val[0] == '-')
+		{
+			val++;
+			flag = -1;
+		}
+		if (!val)
+			err(5, ln);
+		for (i = 0; val[i] != '\0'; i++)
+		{
+			if (isdigit(val[i]) == 0)
+				err(5, ln);
+		}
+		node = create_node(atoi(val) *flag);
+		if (format == 0)
+			func(&node, ln);
+		if (format == 1)
+			add_to_queue(&node, ln);
+	}
+	else
+		func(&head, ln);
 }

@@ -13,6 +13,7 @@ void mul_nodes(stack_t **stack, unsigned int ln)
 		more_err(8, ln, "mul");
 	(*stack) = (*stack)->next;
 	mul = (*stack)->n * (*stack)->prev->n;
+	(*stack)->n = mul;
 	free((*stack)->prev);
 	(*stack)->prev = NULL;
 }
